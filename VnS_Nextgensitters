@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>V&S Next Gen Sitters</title>
+  <meta
+    name="description"
+    content="V&S Next Gen Sitters — Fun, responsible, engaging childcare for the next generation."
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #07111f;
+      --bg2: #0b1830;
+      --card: rgba(255,255,255,0.07);
+      --card-border: rgba(255,255,255,0.12);
+      --white: #ffffff;
+      --muted: #aebbd0;
+      --cyan: #35e7ff;
+      --purple: #9b6cff;
+      --pink: #ff5fd2;
+      --green: #5dffb0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(53,231,255,.14), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(155,108,255,.16), transparent 30%),
+        linear-gradient(135deg, var(--bg), #030812);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1150px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(4, 11, 22, .82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner {
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      color: #dce6f5;
+      transition: .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .nav-button {
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      padding: 11px 18px;
+      border-radius: 30px;
+      font-weight: 800;
+      color: #03101b;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(53,231,255,.12);
+      filter: blur(80px);
+      right: -180px;
+      top: 100px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid rgba(53,231,255,.35);
+      background: rgba(53,231,255,.08);
+      color: var(--cyan);
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(
+        90deg,
+        var(--cyan),
+        var(--purple),
+        var(--pink)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 23px;
+      border-radius: 35px;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      color: #03101b;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.05);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* GENERAL */
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading small {
+      color: var(--cyan);
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      margin: 8px 0 12px;
+      line-height: 1.05;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 25px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .glass h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .glass p {
+      color: var(--muted);
+    }
+
+    .values {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .value {
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.05);
+      border-left: 3px solid var(--cyan);
+      font-weight: 700;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service {
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.03)
+      );
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 25px;
+      transition: .25s;
+    }
+
+    .service:hover {
+      transform: translateY(-7px);
+      border-color: rgba(53,231,255,.45);
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .service h3 {
+      margin-bottom: 7px;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* PRICING */
+
+    .pricing {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(53,231,255,.12),
+          rgba(155,108,255,.12)
+        );
+      border: 1px solid rgba(53,231,255,.3);
+      border-radius: 30px;
+      padding: 40px;
+    }
+
+    .price-label {
+      color: var(--cyan);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .price {
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin: 15px 0;
+    }
+
+    .price small {
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    .price-card p {
+      color: var(--muted);
+    }
+
+    .price-list {
+      margin-top: 25px;
+      list-style: none;
+    }
+
+    .price-list li {
+      margin: 10px 0;
+    }
+
+    .price-list li::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* BOOKING */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 25px;
+    }
+
+    .number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      color: #03101b;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    /* INFO */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .availability {
+      border: 1px solid rgba(93,255,176,.3);
+      background: rgba(93,255,176,.06);
+    }
+
+    .availability h3 {
+      color: var(--green);
+    }
+
+    .safety {
+      border: 1px solid rgba(255,95,210,.25);
+      background: rgba(255,95,210,.06);
+    }
+
+    .safety h3 {
+      color: var(--pink);
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      border-radius: 30px;
+      padding: 50px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(53,231,255,.15), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(155,108,255,.15), transparent 30%),
+        rgba(255,255,255,.05);
+      border: 1px solid var(--card-border);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .contact-item {
+      padding: 13px 17px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--cyan);
+      font-size: .78rem;
+      margin-bottom: 2px;
+    }
+
+    /* MISSION */
+
+    .mission {
+      text-align: center;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .mission h2 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      margin-bottom: 20px;
+    }
+
+    .mission p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .tagline {
+      margin-top: 25px;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--cyan);
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 35px 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid,
+      .pricing,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 70px 0;
+      }
+
+      .services-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card,
+      .contact-box {
+        padding: 30px 22px;
+      }
+
+      .price {
+        font-size: 3.5rem;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="container nav-inner">
+
+      <a href="#home" class="logo">
+        V&S <span>NEXT GEN</span> SITTERS
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#booking">Booking</a></li>
+      </ul>
+
+      <a href="#contact" class="nav-button">Book Now</a>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <main id="home">
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="hero-content">
+
+          <div class="badge">
+            FUN • RESPONSIBLE • NEXT GENERATION
+          </div>
+
+          <h1>
+            Where childcare meets
+            <span>the next generation.</span>
+          </h1>
+
+          <p>
+            V&S Next Gen Sitters is an up-and-coming babysitting business
+            created by Von Rogers and Suli Hackett. We provide families
+            with responsible, fun, creative, and engaging childcare.
+          </p>
+
+          <div class="buttons">
+            <a href="#contact" class="btn btn-primary">
+              Book With Us →
+            </a>
+
+            <a href="#services" class="btn btn-secondary">
+              Explore Services
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <small>ABOUT V&S</small>
+
+          <h2>
+            More than babysitting.
+          </h2>
+
+          <p>
+            We want children to have something fun, active, creative,
+            and meaningful to do while their parents are away.
+          </p>
+        </div>
+
+
+        <div class="about-grid">
+
+          <div class="glass">
+
+            <h3>Meet the Owners</h3>
+
+            <p>
+              V&S Next Gen Sitters was created by
+              <strong>Von Rogers</strong> and
+              <strong>Suli Hackett</strong>.
+            </p>
+
+            <br>
+
+            <p>
+              We are high-school entrepreneurs building something
+              positive for families and our community.
+            </p>
+
+          </div>
+
+
+          <div class="glass">
+
+            <h3>What We Stand For</h3>
+
+            <div class="values">
+
+              <div class="value">
+                🛡️ Responsibility
+              </div>
+
+              <div class="value">
+                🎨 Creativity
+              </div>
+
+              <div class="value">
+                ⭐ Positive Experiences
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- AGE -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="glass">
+
+          <small style="color:var(--cyan);font-weight:900;">
+            OUR AGE RANGE
+          </small>
+
+          <h2 style="font-size:2.5rem;margin:8px 0;">
+            Ages 4–9
+          </h2>
+
+          <p style="color:var(--muted);">
+            Our main age range is children ages 4–9.
+            Pricing and activities may vary depending on the
+            child's age and individual needs.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section id="services">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <small>WHAT WE OFFER</small>
+
+          <h2>
+            Something for every kind of kid.
+          </h2>
+
+          <p>
+            We keep children engaged with age-appropriate activities,
+            learning opportunities, creativity, and fun.
+          </p>
+        </div>
+
+
+        <div class="services-grid">
+
+          <div class="service">
+            <div class="service-icon">🎮</div>
+            <h3>Games & Entertainment</h3>
+            <p>
+              Age-appropriate games and activities to keep children
+              entertained and engaged.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">📚</div>
+            <h3>Homework Help</h3>
+            <p>
+              Support with homework and positive learning habits.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🎨</div>
+            <h3>Arts & Crafts</h3>
+            <p>
+              Creative projects that allow children to express
+              themselves and have fun.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">⚽</div>
+            <h3>Outdoor Activities</h3>
+            <p>
+              Appropriate outdoor activities when conditions and
+              parent approval make them suitable.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🌳</div>
+            <h3>Nature Walks</h3>
+            <p>
+              Supervised outdoor exploration when appropriate.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🍎</div>
+            <h3>Food & Snacks</h3>
+            <p>
+              V&S can provide food and snacks, or parents can
+              provide food for their children.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🧠</div>
+            <h3>Learning Opportunities</h3>
+            <p>
+              Educational activities mixed with play and creativity.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🏆</div>
+            <h3>Field Days</h3>
+            <p>
+              Games, challenges, activities, and fun competitions.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🚌</div>
+            <h3>Special Activities</h3>
+            <p>
+              Field trips and special outings may be available
+              when properly planned and approved in advance.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRICING -->
+
+    <section id="pricing">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <small>PRICING</small>
+
+          <h2>
+            Simple starting price.
+          </h2>
+
+          <p>
+            Final pricing is confirmed with the parent before
+            the booking is finalized.
+          </p>
+        </div>
+
+
+        <div class="pricing">
+
+          <div class="price-card">
+
+            <div class="price-label">
+              One Child
+            </div>
+
+            <div class="price">
+              $25
+              <small>/ hour</small>
+            </div>
+
+            <p>
+              Our standard starting rate for one child.
+            </p>
+
+            <ul class="price-list">
+              <li>Fun activities</li>
+              <li>Games & entertainment</li>
+              <li>Homework support</li>
+              <li>Arts & crafts</li>
+              <li>Learning opportunities</li>
+            </ul>
+
+          </div>
+
+
+          <div class="glass">
+
+            <h3>Pricing May Vary</h3>
+
+            <p>
+              Pricing may differ depending on:
+            </p>
+
+            <ul class="price-list">
+              <li>Child's age</li>
+              <li>Additional children</li>
+              <li>Special activities</li>
+              <li>Special scheduling needs</li>
+              <li>Field trips or planned activities</li>
+            </ul>
+
+            <br>
+
+            <strong>
+              Payment: Cash only.
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BOOKING -->
+
+    <section id="booking">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <small>HOW TO BOOK</small>
+
+          <h2>
+            Four easy steps.
+          </h2>
+
+          <p>
+            Contact us ahead of time so we can make sure everything
+            is ready for your child.
+          </p>
+        </div>
+
+
+        <div class="steps">
+
+          <div class="step">
+
+            <div class="number">1</div>
+
+            <h3>Contact Us</h3>
+
+            <p>
+              Reach us by phone, email, or Instagram.
+            </p>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">2</div>
+
+            <h3>Give Us Details</h3>
+
+            <p>
+              Tell us the date, times, number of children,
+              ages, location, and important care instructions.
+            </p>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">3</div>
+
+            <h3>Safety Information</h3>
+
+            <p>
+              Provide emergency contacts, allergies, medical
+              needs, dietary restrictions, medications, and
+              other important care instructions privately.
+            </p>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">4</div>
+
+            <h3>Confirm</h3>
+
+            <p>
+              We confirm availability, schedule, services,
+              price, and special instructions.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- AVAILABILITY / SAFETY -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="info-grid">
+
+          <div class="glass availability">
+
+            <h3>📅 Availability</h3>
+
+            <br>
+
+            <p>
+              General availability:
+              <strong>Friday – Monday</strong>
+            </p>
+
+            <br>
+
+            <p>
+              Availability depends on Von and Suli's schedules,
+              so parents should contact us ahead of time.
+            </p>
+
+            <br>
+
+            <p>
+              Please contact us at least
+              <strong>one day before</strong> the requested
+              babysitting date whenever possible.
+            </p>
+
+          </div>
+
+
+          <div class="glass safety">
+
+            <h3>🔐 Safety & Care</h3>
+
+            <br>
+
+            <p>
+              Important information such as allergies, medical
+              needs, medications, emergency contacts, and
+              dietary restrictions should be provided privately
+              during the booking process.
+            </p>
+
+            <br>
+
+            <p>
+              We want every child to have a safe, comfortable,
+              positive, and enjoyable experience.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- WHY CHOOSE US -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-heading">
+          <small>WHY V&S?</small>
+
+          <h2>
+            Built for the next generation.
+          </h2>
+        </div>
+
+
+        <div class="services-grid">
+
+          <div class="service">
+            <div class="service-icon">🛡️</div>
+            <h3>Responsible</h3>
+            <p>
+              We take the responsibility of caring for children seriously.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🔥</div>
+            <h3>Fun</h3>
+            <p>
+              Children should enjoy their time instead of simply sitting around.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🎯</div>
+            <h3>Engaging</h3>
+            <p>
+              Games, crafts, learning, and activities keep children involved.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🏃</div>
+            <h3>Active</h3>
+            <p>
+              Appropriate movement and outdoor activities can make
+              childcare more exciting.
+            </p>
+          </div>
+
+
+          <div class="service">
+            <div class="service-icon">🚀</div>
+            <h3>Next Generation</h3>
+            <p>
+              Young entrepreneurs building something positive
+              for families and the community.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MISSION -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="mission">
+
+          <small style="color:var(--cyan);font-weight:900;letter-spacing:2px;">
+            OUR MISSION
+          </small>
+
+          <h2>
+            Childcare should be responsible AND fun.
+          </h2>
+
+          <p>
+            Our mission is to provide families with babysitting that
+            combines responsibility, fun, creativity, learning,
+            and positive experiences. We want children to look
+            forward to V&S while parents can feel confident that
+            their children are being cared for responsibly.
+          </p>
+
+          <div class="tagline">
+            V&S Next Gen Sitters — Where childcare meets the next generation.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+      <div class="container">
+
+        <div class="contact-box">
+
+          <h2>
+            Ready to book?
+          </h2>
+
+          <p>
+            Contact V&S Next Gen Sitters to check availability
+            and get your booking started.
+          </p>
+
+
+          <div class="buttons" style="justify-content:center;">
+
+            <a href="tel:3026870794" class="btn btn-primary">
+              📞 Call Us
+            </a>
+
+            <a href="mailto:Rayvonrogers08@gmail.com" class="btn btn-secondary">
+              ✉️ Email Us
+            </a>
+
+          </div>
+
+
+          <div class="contact-details">
+
+            <div class="contact-item">
+              <strong>PHONE</strong>
+              302-687-0794
+            </div>
+
+            <div class="contact-item">
+              <strong>EMAIL</strong>
+              Rayvonrogers08@gmail.com
+            </div>
+
+            <div class="contact-item">
+              <strong>INSTAGRAM</strong>
+              @VnS_Nextgensitters
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      <p>
+        © 2026 <strong>V&S Next Gen Sitters</strong>.
+        All rights reserved.
+      </p>
+
+      <p style="margin-top:7px;">
+        Where childcare meets the next generation.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
